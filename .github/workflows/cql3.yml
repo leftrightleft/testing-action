@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        language: ${{ fromJSON(needs.create-matrix.outputs.matrix) }} # Set output from create-matrix job
+        language: ${{ fromJSON(needs.create-matrix.outputs.matrix) }} 
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
 
     steps:
