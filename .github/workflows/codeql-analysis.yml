@@ -32,27 +32,24 @@ jobs:
       actions: read
       contents: read
       security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix: 
+        language: ${{ fromJSON(needs.create-matrix.outputs.matrix) }} # Set output from create-matrix job
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
+
     steps:
-    - name: echo
-      run: echo ${{ needs.create-matrix.outputs.matrix }}
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-#    strategy:
-#      fail-fast: false
-#      matrix: 
-#        language: ${{ fromJSON(needs.create-matrix.outputs.matrix) }} # Set output from create-matrix job
-#        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
 
-#    steps:
-#    - name: Checkout repository
-#      uses: actions/checkout@v2
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v1
 
-#    - name: Initialize CodeQL
-#      uses: github/codeql-action/init@v2
-#      with:
-#        languages: ${{ matrix.language }}
-
-#    - name: Autobuild
-#      uses: github/codeql-action/autobuild@v1
-
-#    - name: Perform CodeQL Analysis
-#      uses: github/codeql-action/analyze@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
