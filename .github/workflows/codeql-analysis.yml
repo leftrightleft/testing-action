@@ -24,7 +24,7 @@ jobs:
           
   analyze:
     needs: create-matrix
-    if: needs.create-matrix.outputs.matrix != '[]'  
+    if: needs.create-matrix.outputs.matrix != 'true'  
     #if: 1 != 1
     name: Analyze
     runs-on: ubuntu-latest
