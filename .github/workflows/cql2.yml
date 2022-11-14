@@ -24,7 +24,7 @@ jobs:
       security-events: write
     steps:
     - name: echo
-      run: echo "${{ needs.create-matrix.outputs.matrix }}"
+      run: echo "${{ fromJSON(needs.create-matrix.outputs.matrix) }}"
 
 #     strategy:
 #       fail-fast: false
