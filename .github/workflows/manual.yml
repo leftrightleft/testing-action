@@ -11,7 +11,7 @@ jobs:
   call-workflow-1-in-local-repo:
     uses: leftrightleft/example-workflows/.github/workflows/reusable-code-scanning.yml@main
     with:
-      config-path: ['go']
+      config-path: "[ 'go', 'python' ]"
 
 #     inputs:
 #       name:
