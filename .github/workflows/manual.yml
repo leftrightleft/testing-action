@@ -17,3 +17,4 @@ jobs:
     uses: leftrightleft/example-workflows/.github/workflows/reusable-code-scanning.yml@main
     with:
       languages: "[ 'go', 'python' ]"
+      build-command: "echo 'helllo'"
