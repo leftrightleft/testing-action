@@ -8,10 +8,12 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
 jobs:
-  call-workflow-1-in-local-repo:
+  security-scanning:
     uses: leftrightleft/example-workflows/.github/workflows/reusable-code-scanning.yml@main
     with:
-      config-path: "[ 'go', 'python' ]"
+      languages: "[ 'go', 'python' ]"
+      codeql: true
+      tfsec: true
 
 #     inputs:
 #       name:
