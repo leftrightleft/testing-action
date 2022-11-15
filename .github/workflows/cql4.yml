@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "Cql4"
 
 on: workflow_dispatch
 
